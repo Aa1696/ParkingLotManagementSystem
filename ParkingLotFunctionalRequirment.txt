@@ -1,0 +1,52 @@
+
+Core Backend Framework
+Tool	Purpose	Reference
+Java 17+	Primary language	https://openjdk.org/
+Spring Boot 3.x	Microservice framework	spring.io
+Spring Cloud	Distributed systems toolkit	https://spring.io/projects/spring-cloud
+Maven	Build & dependency management	https://maven.apache.org/
+Microservices Infrastructure
+Tool	Purpose	Reference
+Spring Cloud Eureka	Service discovery & registration	https://spring.io/projects/spring-cloud-netflix
+Spring Cloud Gateway	API Gateway, routing, load balancing	https://spring.io/projects/spring-cloud-gateway
+Spring Cloud Config	Centralized configuration management	https://docs.spring.io/spring-cloud-config/docs/current/reference/html/
+OpenFeign (Feign Client)	Declarative inter-service REST calls	https://spring.io/projects/spring-cloud-openfeign
+Messaging & Event-Driven Architecture
+Tool	Purpose	Reference
+Apache Kafka	Async messaging (notifications, events)	https://kafka.apache.org/
+Spring Kafka	Kafka integration for Spring Boot	https://spring.io/projects/spring-kafka
+Security & Authentication
+Tool	Purpose	Reference
+Spring Security	Authentication & authorization framework	https://spring.io/projects/spring-security
+JWT (JSON Web Tokens)	Stateless token-based auth	https://jwt.io/
+Azure Entra ID (optional)	OAuth2/OIDC identity provider	https://learn.microsoft.com/en-us/entra/
+Database & Persistence
+Tool	Purpose	Reference
+MySQL / PostgreSQL	Relational database per microservice	https://www.postgresql.org/
+Spring Data JPA	ORM & repository abstraction	Spring Data JPA
+Hibernate	JPA implementation	https://hibernate.org/
+Flyway / Liquibase	Database schema migration	https://flywaydb.org/
+Notification
+Tool	Purpose	Reference
+JavaMailSender	Email notifications via Spring Boot	https://docs.spring.io/spring-framework/reference/integration/email.html
+Containerization & Deployment
+Tool	Purpose	Reference
+Docker	Containerize each microservice	https://www.docker.com/
+Docker Compose	Multi-container orchestration (local)	https://docs.docker.com/compose/
+Azure App Service	Cloud hosting (your $400 credit)	https://azure.microsoft.com/en-us/products/app-service
+Azure Container Registry	Store Docker images	https://learn.microsoft.com/en-us/azure/container-registry/
+Testing & Documentation
+Tool	Purpose	Reference
+Postman	API testing & validation	https://www.postman.com/
+JUnit 5 + Mockito	Unit & integration testing	https://junit.org/junit5/
+Swagger / SpringDoc OpenAPI	Auto-generate API docs	https://springdoc.org/
+Design Patterns to Apply
+Your project already uses SOLID principles. Key patterns for a parking system include: [dev.to]
+ 
+Pattern	Where to Apply
+Strategy Pattern	PricingStrategy — Hourly, Flat Rate, Dynamic pricing
+Factory Pattern	VehicleFactory — Create Car, Bike, Truck objects
+Observer Pattern	DisplayBoard — Notify when spots become free/occupied
+Singleton Pattern	ParkingLot — Only one parking lot instance
+Builder Pattern	ParkingLotBuilder — Construct complex lot configurations
+Saga / Outbox Pattern	Distributed transactions across Payment → Ticket → Notification

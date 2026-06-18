@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Parking Lot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Login Screen -->
+        <section id="login-section" class="screen active">
+            <div class="glass-card login-card">
+                <div class="logo">
+                    <div class="logo-icon">🅿️</div>
+                    <h2>Smart Parking</h2>
+                </div>
+                <form id="login-form">
+                    <div class="input-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" placeholder="admin" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="admin" required>
+                    </div>
+                    <button type="submit" class="btn primary-btn" id="login-btn">
+                        <span class="btn-text">Login</span>
+                        <div class="spinner hidden"></div>
+                    </button>
+                    <p id="login-error" class="error-text hidden">Invalid credentials</p>
+                </form>
+            </div>
+        </section>
+
+        <!-- Dashboard Screen -->
+        <section id="dashboard-section" class="screen hidden">
+            <nav class="navbar glass-card">
+                <div class="logo">
+                    <div class="logo-icon">🅿️</div>
+                    <h2>Smart Parking</h2>
+                </div>
+                <button id="logout-btn" class="btn secondary-btn">Logout</button>
+            </nav>
+
+            <main class="dashboard-content">
+                <!-- Capacity Overview -->
+                <div class="glass-card capacity-widget">
+                    <h3>Lot Capacity</h3>
+                    <div class="capacity-stats" id="capacity-container">
+                        <div class="spinner"></div>
+                    </div>
+                </div>
+
+                <div class="action-cards">
+                    <!-- Entry Gate -->
+                    <div class="glass-card action-card">
+                        <h3>Vehicle Entry</h3>
+                        <form id="entry-form">
+                            <div class="input-group">
+                                <label for="gateId">Gate ID</label>
+                                <input type="number" id="gateId" value="1" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="licensePlate">License Plate</label>
+                                <input type="text" id="licensePlate" placeholder="MH12AB1234" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="vehicleType">Vehicle Type</label>
+                                <select id="vehicleType" required>
+                                    <option value="CAR">Car</option>
+                                    <option value="MOTORCYCLE">Motorcycle</option>
+                                    <option value="TRUCK">Truck</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label for="ownerName">Owner Name (Optional)</label>
+                                <input type="text" id="ownerName" placeholder="John Doe">
+                            </div>
+                            <div class="input-group">
+                                <label for="email">Email (Optional)</label>
+                                <input type="email" id="email" placeholder="john@example.com">
+                            </div>
+                            <button type="submit" class="btn primary-btn">Generate Ticket</button>
+                        </form>
+                        <div id="entry-result" class="result-box hidden"></div>
+                    </div>
+
+                    <!-- Exit Gate -->
+                    <div class="glass-card action-card">
+                        <h3>Vehicle Exit</h3>
+                        <form id="exit-form">
+                            <div class="input-group">
+                                <label for="exitGateId">Gate ID</label>
+                                <input type="number" id="exitGateId" value="2" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="ticketId">Ticket ID</label>
+                                <input type="number" id="ticketId" placeholder="123" required>
+                            </div>
+                            <button type="submit" class="btn warning-btn">Process Exit</button>
+                        </form>
+                        <div id="exit-result" class="result-box hidden">
+                            <!-- Invoice details will appear here -->
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </section>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="payment-modal" class="modal hidden">
+        <div class="glass-card modal-content">
+            <h3>Process Payment</h3>
+            <p id="payment-amount" class="amount-display"></p>
+            <form id="payment-form">
+                <input type="hidden" id="payment-invoice-id">
+                <div class="input-group">
+                    <label for="payment-method">Payment Method</label>
+                    <select id="payment-method">
+                        <option value="CREDIT_CARD">Credit Card</option>
+                        <option value="UPI">UPI</option>
+                        <option value="CASH">Cash</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn success-btn">Confirm Payment</button>
+                <button type="button" id="cancel-payment-btn" class="btn secondary-btn">Cancel</button>
+            </form>
+            <div id="payment-result" class="result-box hidden"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

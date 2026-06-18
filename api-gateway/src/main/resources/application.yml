@@ -1,0 +1,53 @@
+server:
+  port: 8080
+  error:
+    include-message: always
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: parking-service
+          uri: lb://parking-service
+          predicates:
+            - Path=/api/entry/**, /api/exit/**, /api/capacity/**, /api/services/**, /api/auth/**
+        - id: parking-swagger
+          uri: lb://parking-service
+          predicates:
+            - Path=/parking-service/v3/api-docs/**
+        - id: payment-service
+          uri: lb://payment-service
+          predicates:
+            - Path=/api/payments/**
+        - id: payment-swagger
+          uri: lb://payment-service
+          predicates:
+            - Path=/payment-service/v3/api-docs/**
+        - id: notification-service
+          uri: lb://notification-service
+          predicates:
+            - Path=/api/notifications/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://localhost:8761/eureka/}
+  instance:
+    prefer-ip-address: true
+
+jwt:
+  secret: ${JWT_SECRET:change-me-in-production}
+
+springdoc:
+  swagger-ui:
+    urls:
+      - name: Parking Service
+        url: /parking-service/v3/api-docs
+      - name: Payment Service
+        url: /payment-service/v3/api-docs

@@ -1,0 +1,90 @@
+# ===========================
+# Build Artifacts
+# ===========================
+**/target/
+*.class
+*.jar
+*.war
+
+# ===========================
+# IDE / Editor Files
+# ===========================
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+*~
+
+# ===========================
+# OS Files
+# ===========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===========================
+# Sensitive / Secret Files
+# ===========================
+token.json
+env.txt
+env.json
+
+# ===========================
+# Log Files
+# ===========================
+*.log
+*_logs.txt
+*-logs.txt
+*-logs-utf8.txt
+az_logs.txt
+p7_logs.txt
+p_logs.txt
+entry-logs.txt
+entry-logs-utf8.txt
+transcript-tail.txt
+
+# ===========================
+# Azure Deployment YAMLs (contain subscription IDs, IPs, infra details)
+# ===========================
+api-gateway.yaml
+parking-service.yaml
+parking-service-current.yaml
+payment-service.yaml
+notification-service.yaml
+parking-env.yaml
+
+# ===========================
+# Deployment Scripts with Hardcoded Secrets
+# ===========================
+fix-env.ps1
+fix-env.cmd
+fix-all-env.cmd
+update-env.ps1
+configure-managed-identity.ps1
+deploy-update-to-azure.ps1
+deploy-fix.ps1
+deploy-apps.ps1
+build-and-deploy-backends.ps1
+build-images.ps1
+dump-logs.ps1
+get-env.ps1
+get-logs.ps1
+get-parking-logs.ps1
+get-payment-logs.ps1
+restart-apps.ps1
+enable-local-auth.ps1
+remove-kafka-env.ps1
+disable-verifier.ps1
+update-yamls.py
+
+# ===========================
+# Large Binaries / Executables
+# ===========================
+*.exe
+
+# ===========================
+# Gemini / Antigravity
+# ===========================
+.gemini/
+.antigravityignore

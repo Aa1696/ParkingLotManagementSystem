@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Parking Lot Management</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-animation"></div>
+    <div class="container">
+        <header>
+            <h1>Smart Parking <span>System</span></h1>
+            <p>Seamlessly manage entry and monitor real-time capacity.</p>
+        </header>
+
+        <main class="dashboard">
+            <!-- Capacity Widget -->
+            <section class="glass-panel capacity-panel">
+                <h2>Real-Time Capacity</h2>
+                <div class="capacity-stats" id="capacityStats">
+                    <div class="stat-box loading">Loading...</div>
+                </div>
+            </section>
+
+            <!-- Entry Kiosk -->
+            <section class="glass-panel entry-panel">
+                <h2>Vehicle Entry Kiosk</h2>
+                <form id="entryForm" class="entry-form">
+                    <div class="input-group">
+                        <label for="licensePlate">License Plate</label>
+                        <input type="text" id="licensePlate" placeholder="e.g. AB 12 CD 3456" required autocomplete="off">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="vehicleType">Vehicle Type</label>
+                        <select id="vehicleType" required>
+                            <option value="" disabled selected>Select Type</option>
+                            <option value="CAR">Car</option>
+                            <option value="BIKE">Bike</option>
+                            <option value="TRUCK">Truck</option>
+                            <option value="EV">Electric Vehicle (EV)</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="ownerName">Owner Name (Optional)</label>
+                        <input type="text" id="ownerName" placeholder="e.g. John Doe" autocomplete="off">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="test@example.com" value="test@example.com" required autocomplete="off">
+                    </div>
+
+                    <button type="submit" class="btn-primary" id="btnSubmit">
+                        <span class="btn-text">Generate Ticket</span>
+                        <span class="loader hidden"></span>
+                    </button>
+                </form>
+                
+                <div id="ticketResult" class="ticket-result hidden">
+                    <h3>Ticket Generated!</h3>
+                    <div class="ticket-details">
+                        <p><strong>Ticket ID:</strong> <span id="resTicketId"></span></p>
+                        <p><strong>Spot:</strong> <span id="resSpot" class="highlight"></span></p>
+                        <p><strong>Floor:</strong> <span id="resFloor"></span></p>
+                        <p><strong>Entry Time:</strong> <span id="resTime"></span></p>
+                    </div>
+                    <button id="btnNewEntry" class="btn-secondary">New Entry</button>
+                </div>
+            </section>
+            <!-- Exit Kiosk -->
+            <section class="glass-panel exit-panel" style="margin-top: 2rem;">
+                <h2>Vehicle Exit & Payment</h2>
+                <form id="exitForm" class="entry-form">
+                    <div class="input-group">
+                        <label for="exitTicketId">Ticket ID</label>
+                        <input type="text" id="exitTicketId" placeholder="e.g. 1" required autocomplete="off">
+                    </div>
+                    <button type="submit" class="btn-primary" id="btnExitSubmit">
+                        <span class="btn-text">Generate Invoice & Pay</span>
+                        <span class="loader hidden"></span>
+                    </button>
+                </form>
+            </section>
+        </main>
+    </div>
+    
+    <!-- Notification Toast -->
+    <div id="toast" class="toast hidden"></div>
+
+    <!-- Email Notification Modal -->
+    <div id="emailModal" class="modal hidden">
+        <div class="modal-content glass-panel" style="width: 500px; max-width: 90vw;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <h3 style="margin: 0;">📨 Incoming Email!</h3>
+                <button id="closeEmailModal" style="background:none; border:none; color:var(--text); font-size:1.5rem; cursor:pointer;">&times;</button>
+            </div>
+            <div id="emailContent" style="background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 8px; font-family: monospace; white-space: pre-wrap; font-size: 0.9rem; max-height: 400px; overflow-y: auto;">
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
